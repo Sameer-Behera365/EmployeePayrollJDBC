@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import java.util.List;
+
 public class EmployeePayrollMain {
     public static void main(String[] args) {
         // UC1 - Test DB Connection
@@ -11,5 +13,11 @@ public class EmployeePayrollMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // UC2 - Retrieve all employees
+        EmployeePayrollService service = EmployeePayrollService.getInstance();
+        System.out.println("\n=== UC2: All Employees ===");
+        List<EmployeePayrollData> employees = service.getEmployeePayrollData();
+        employees.forEach(System.out::println);
     }
 }
