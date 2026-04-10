@@ -53,5 +53,11 @@ public class EmployeePayrollMain {
         Map<String, Double> maxResult = service.getSalaryStatsByGender("MAX");
         maxResult.forEach((gender, max) ->
                 System.out.println("Gender: " + gender + " | MAX: " + max));
+
+        // UC6 - Add new employee
+        System.out.println("\n=== UC6: Adding new employee ===");
+        service.addEmployee("John", 2000000, "M", LocalDate.of(2021, 6, 15));
+        System.out.println("\n=== UC6: All Employees after adding John ===");
+        service.getEmployeePayrollData().forEach(System.out::println);
     }
 }
