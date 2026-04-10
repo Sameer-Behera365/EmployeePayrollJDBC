@@ -14,10 +14,15 @@ public class EmployeePayrollMain {
             e.printStackTrace();
         }
 
-        // UC2 - Retrieve all employees
         EmployeePayrollService service = EmployeePayrollService.getInstance();
+
+        // UC2 - Retrieve all employees
         System.out.println("\n=== UC2: All Employees ===");
         List<EmployeePayrollData> employees = service.getEmployeePayrollData();
         employees.forEach(System.out::println);
+
+        // UC3 - Update salary with PreparedStatement
+        System.out.println("\n=== UC3: Update Terisa Salary ===");
+        service.updateSalaryWithPreparedStatement("Terisa", 3000000);
     }
 }
