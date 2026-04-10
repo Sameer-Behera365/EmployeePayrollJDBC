@@ -59,5 +59,12 @@ public class EmployeePayrollMain {
         service.addEmployee("John", 2000000, "M", LocalDate.of(2021, 6, 15));
         System.out.println("\n=== UC6: All Employees after adding John ===");
         service.getEmployeePayrollData().forEach(System.out::println);
+
+        // UC7 - Salary statistics by gender
+        System.out.println("\n=== UC7: Salary Statistics by Gender ===");
+        System.out.println("--- COUNT ---");
+        Map<String, Double> countResult = service.getSalaryStatsByGender("COUNT");
+        countResult.forEach((gender, count) ->
+                System.out.println("Gender: " + gender + " | COUNT: " + count));
     }
 }
