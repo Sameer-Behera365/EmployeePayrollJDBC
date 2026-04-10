@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EmployeePayrollMain {
@@ -24,5 +25,11 @@ public class EmployeePayrollMain {
         // UC3 - Update salary with PreparedStatement
         System.out.println("\n=== UC3: Update Terisa Salary ===");
         service.updateSalaryWithPreparedStatement("Terisa", 3000000);
+
+        // UC4 - Retrieve employees by date range
+        System.out.println("\n=== UC4: Employees joined between 2018 and now ===");
+        List<EmployeePayrollData> byDate = service.getEmployeesByDateRange(
+                LocalDate.of(2018, 1, 1), LocalDate.now());
+        byDate.forEach(System.out::println);
     }
 }
