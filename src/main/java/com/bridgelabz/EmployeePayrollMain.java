@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeePayrollMain {
     public static void main(String[] args) {
@@ -31,5 +32,26 @@ public class EmployeePayrollMain {
         List<EmployeePayrollData> byDate = service.getEmployeesByDateRange(
                 LocalDate.of(2018, 1, 1), LocalDate.now());
         byDate.forEach(System.out::println);
+
+        // UC5 - Salary aggregate by gender
+        System.out.println("\n=== UC5: SUM of salary by gender ===");
+        Map<String, Double> sumResult = service.getSalaryStatsByGender("SUM");
+        sumResult.forEach((gender, sum) ->
+                System.out.println("Gender: " + gender + " | SUM: " + sum));
+
+        System.out.println("\n=== UC5: AVG of salary by gender ===");
+        Map<String, Double> avgResult = service.getSalaryStatsByGender("AVG");
+        avgResult.forEach((gender, avg) ->
+                System.out.println("Gender: " + gender + " | AVG: " + avg));
+
+        System.out.println("\n=== UC5: MIN of salary by gender ===");
+        Map<String, Double> minResult = service.getSalaryStatsByGender("MIN");
+        minResult.forEach((gender, min) ->
+                System.out.println("Gender: " + gender + " | MIN: " + min));
+
+        System.out.println("\n=== UC5: MAX of salary by gender ===");
+        Map<String, Double> maxResult = service.getSalaryStatsByGender("MAX");
+        maxResult.forEach((gender, max) ->
+                System.out.println("Gender: " + gender + " | MAX: " + max));
     }
 }
